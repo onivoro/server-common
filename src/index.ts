@@ -28,3 +28,4 @@ export * from './lib/functions/parse-body.function';
 export * from './lib/functions/parse-package-json.function';
 export * from './lib/functions/read-file-as-json.function';
 export * from './lib/functions/save-file-as-json.function';
+export * from './lib/functions/shell.function';
