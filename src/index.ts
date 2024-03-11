@@ -18,6 +18,7 @@ export * from './lib/dtos/values.dto';
 
 export * from './lib/functions/create-api-app.function';
 export * from './lib/functions/decode.function';
+export * from './lib/functions/encode.function';
 export * from './lib/functions/generate-app-metadata.function';
 export * from './lib/functions/get-memory-stats.function';
 export * from './lib/functions/get-package-version.function';
