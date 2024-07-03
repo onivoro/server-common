@@ -1,3 +1,4 @@
+import { DocumentBuilder } from '@nestjs/swagger';
 import { initOpenapi } from './init-openapi.function';
 import { NestFactory } from '@nestjs/core';
 import * as bodyParser from 'body-parser';
@@ -10,7 +11,9 @@ export type TApiAppConfig = {
   corsOptions?: CorsOptions,
   globalPrefix?: string,
   title?: string,
-  logger?: NestApplicationContextOptions['logger']
+  version?: string,
+  logger?: NestApplicationContextOptions['logger'],
+  documentBuilder?: (documentBuilder: DocumentBuilder) => DocumentBuilder,
 };
 
 export async function configureApiApp(
@@ -25,6 +28,8 @@ export async function configureApiApp(
     globalPrefix,
     title,
     logger,
+    version,
+    documentBuilder,
   } = options;
 
   const app = await NestFactory.create(module, { logger });
@@ -35,7 +40,7 @@ export async function configureApiApp(
   app.use(bodyParser.json({ limit: '50mb' }));
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
-  await initOpenapi(app, title || module.name, project, appRoot);
+  await initOpenapi(app, title || module.name, project, appRoot, version, documentBuilder);
 
   return app;
 }

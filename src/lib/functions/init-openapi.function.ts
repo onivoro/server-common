@@ -4,14 +4,15 @@ import { writeFile } from 'fs/promises';
 import { INestApplication } from '@nestjs/common';
 import { generateAppMetadata } from './generate-app-metadata.function';
 
-export async function initOpenapi(app: INestApplication, title: string, projectName: string, appRoot: string) {
+export async function initOpenapi(app: INestApplication, title: string, projectName: string, appRoot: string, version?: string, documentBuilder?: (document: DocumentBuilder) => DocumentBuilder) {
   const { swaggerJsonPath } = generateAppMetadata(projectName, appRoot);
 
-  const options = new DocumentBuilder()
+  const _documentBuilder = new DocumentBuilder()
     .setTitle(title)
     .setDescription('')
-    // .setVersion(JSON.parse(await readFile('./package.json', 'utf-8')).version)
-    .build();
+    .setVersion(version || '0.0.0');
+
+  const options = (documentBuilder ? documentBuilder(_documentBuilder) : _documentBuilder).build();
 
   const document = SwaggerModule.createDocument(app, options);
 
