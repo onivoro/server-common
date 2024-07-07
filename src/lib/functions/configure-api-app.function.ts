@@ -3,7 +3,7 @@ import { initOpenapi } from './init-openapi.function';
 import { NestFactory } from '@nestjs/core';
 import * as bodyParser from 'body-parser';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
-import { NestApplicationContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface';
+import { NestApplicationOptions } from '@nestjs/common';
 
 export type TApiAppConfig = {
   project: string,
@@ -12,13 +12,13 @@ export type TApiAppConfig = {
   globalPrefix?: string,
   title?: string,
   version?: string,
-  logger?: NestApplicationContextOptions['logger'],
   documentBuilder?: (documentBuilder: DocumentBuilder) => DocumentBuilder,
 };
 
 export async function configureApiApp(
   module: { name: string },
-  options: TApiAppConfig
+  options: TApiAppConfig,
+  nestApplicationOptions?: NestApplicationOptions
 ) {
 
   const {
@@ -27,12 +27,11 @@ export async function configureApiApp(
     corsOptions,
     globalPrefix,
     title,
-    logger,
     version,
     documentBuilder,
   } = options;
 
-  const app = await NestFactory.create(module, { logger });
+  const app = await NestFactory.create(module, nestApplicationOptions);
 
   app.setGlobalPrefix(globalPrefix);
   app.enableCors(corsOptions);
