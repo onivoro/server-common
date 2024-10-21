@@ -21,6 +21,7 @@ export * from './lib/functions/configure-api-app.function';
 export * from './lib/functions/decode.function';
 export * from './lib/functions/encode.function';
 export * from './lib/functions/generate-app-metadata.function';
+export * from './lib/functions/generate-unique-code';
 export * from './lib/functions/get-memory-stats.function';
 export * from './lib/functions/get-package-version.function';
 export * from './lib/functions/get-random-string.function';
