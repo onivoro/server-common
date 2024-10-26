@@ -33,7 +33,9 @@ export async function configureApiApp(
 
   const app = await NestFactory.create(module, nestApplicationOptions);
 
-  app.setGlobalPrefix(globalPrefix);
+  if(globalPrefix) {
+    app.setGlobalPrefix(globalPrefix);
+  }
   app.enableCors(corsOptions);
   app.enableShutdownHooks();
   app.use(bodyParser.json({ limit: '50mb' }));
