@@ -5,6 +5,7 @@ export * from './lib/constants/version-provider-token.constant';
 export * from './lib/decorators/api-body-unspecified.decorator';
 export * from './lib/decorators/api-query-paged-params.decorator';
 export * from './lib/decorators/api-response-paged.decorator';
+export * from './lib/decorators/default-api-controller.decorator';
 export * from './lib/decorators/environment-class.decorator';
 export * from './lib/decorators/query-paged-params.decorator';
 
