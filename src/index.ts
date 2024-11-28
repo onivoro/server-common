@@ -35,3 +35,10 @@ export * from './lib/functions/parse-package-json.function';
 export * from './lib/functions/read-file-as-json.function';
 export * from './lib/functions/save-file-as-json.function';
 export * from './lib/functions/shell.function';
+
+export * from './lib/pipes/parse-date-optional.pipe';
+export * from './lib/pipes/parse-month.pipe';
+export * from './lib/pipes/parse-uuid-optional.pipe';
+export * from './lib/pipes/parse-uuids.pipe';
+export * from './lib/pipes/parse-year.pipe';
+export * from './lib/pipes/zod-validation.pipe';
