@@ -16,7 +16,7 @@ export type TApiAppConfig = {
 };
 
 export async function configureApiApp(
-  module: { name: string },
+  module: any,
   options: TApiAppConfig,
   nestApplicationOptions?: NestApplicationOptions
 ) {

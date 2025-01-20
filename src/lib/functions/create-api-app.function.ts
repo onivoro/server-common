@@ -5,7 +5,7 @@ import * as bodyParser from 'body-parser';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 
 export async function createApiApp(
-  module: { name: string },
+  module: any,
   port: number,
   project: string,
   appRoot: string,
